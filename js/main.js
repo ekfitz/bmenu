@@ -1,17 +1,21 @@
+makeDummy();
+
+var dummyDiv = document.getElementById("dummy");
+
 makeHam();
-hamburger.style.backgroundColor = "yellow";
-var line1 = document.getElementById("ln1");
 
-invertColor(line1);
+var hamburger = document.getElementById("hamburger");
+var topLine = document.getElementById("topLine");
+var middleLine = document.getElementById("middleLine");
+var bottomLine = document.getElementById("bottomLine");
 
+swapProperties(dummyDiv, hamburger);
 
-
-// --- css property backgroundColor changes
-// --- background of the three lines, instead of
-// --- container div background
-
-
-
+function makeDummy() {
+  var du = document.createElement("div");
+  du.id = "dummy";
+  document.body.appendChild(du);
+}
 
 // --- Create the div #hamburger
 function makeHam() {
@@ -29,7 +33,7 @@ function makeHam() {
   ln1.style.width = "100%";
   ln1.style.height = "20%";
   ln1.style.top = "0%";
-//  ln1.style.backgroundColor = "black";
+  ln1.style.backgroundColor = "black";
   ham.appendChild(ln1);
 
 // --- Create the middle line
@@ -53,12 +57,39 @@ function makeHam() {
   ham.appendChild(ln3);
 }
 
-function invertColor(x) {
-  var hamburger = document.getElementById("hamburger");
+function swapProperties(x, y) {
+  var swapP = window.getComputedStyle(x, null).getPropertyValue("position");
+  var swapW = window.getComputedStyle(x, null).getPropertyValue("width");
+  var swapH = window.getComputedStyle(x, null).getPropertyValue("height");
+  var swapBC = window.getComputedStyle(x, null).getPropertyValue("background-color");
+  var swapT = window.getComputedStyle(x, null).getPropertyValue("top");
+  var swapL = window.getComputedStyle(x, null).getPropertyValue("left");
+  var swapO = window.getComputedStyle(x, null).getPropertyValue("opacity");
+  var swapB = window.getComputedStyle(x, null).getPropertyValue("border");
+  var swapBW = window.getComputedStyle(x, null).getPropertyValue("border-width");
+  var swapBR = window.getComputedStyle(x, null).getPropertyValue("border-radius");
 
-  if (hamburger.style.backgroundColor == "yellow") {
-    x.style.backgroundColor = "red";
-  } else {
-    x.style.backgroundColor = "green";
-  }
+  y.style.position = swapP;
+  y.style.width = swapW;
+  y.style.height = swapH;
+  y.style.top = swapT;
+  y.style.left = swapL;
+  y.style.opacity = swapO;
+
+  topLine.style.backgroundColor = swapBC;
+  topLine.style.border = swapB;
+  topLine.style.borderWidth = swapBW;
+  topLine.style.borderRadius = swapBR;
+
+  middleLine.style.backgroundColor = swapBC;
+  middleLine.style.border = swapB;
+  middleLine.style.borderWidth = swapBW;
+  middleLine.style.borderRadius = swapBR;
+
+  bottomLine.style.backgroundColor = swapBC;
+  bottomLine.style.border = swapB;
+  bottomLine.style.borderWidth = swapBW;
+  bottomLine.style.borderRadius = swapBR;
+
+  x.style.display = "none";
 }
