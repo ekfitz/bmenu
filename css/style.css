@@ -1,0 +1,17 @@
+body {
+  background-color: #171738;
+}
+
+#hamburgerzzz {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: #593C8F;
+}
+
+#hamburger {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: yellow;
+}
